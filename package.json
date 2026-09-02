@@ -1,0 +1,9 @@
+{
+  "name": "porch",
+  "private": true,
+  "type": "module",
+  "description": "Porch — the word-ear. The Christman AI Project.",
+  "scripts": {
+    "test": "node --experimental-strip-types --test src/lib/porch/porch.test.ts"
+  }
+}

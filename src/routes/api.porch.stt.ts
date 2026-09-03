@@ -5,12 +5,17 @@ export const Route = createFileRoute("/api/porch/stt")({
   server: {
     handlers: {
       GET: async () => {
+        const seated = Boolean(
+          (process.env.PORCH_EAR_URL || process.env.FILAMENT_EAR_URL || "").trim(),
+        );
         return Response.json({
           ok: true,
           organ: "porch",
           house: "http://127.0.0.1:9785/say",
           keyless: true,
-          ear: "porch",
+          cloud: false,
+          seated,
+          ear: seated ? "porch" : "unseated",
         });
       },
       POST: async ({ request }) => {

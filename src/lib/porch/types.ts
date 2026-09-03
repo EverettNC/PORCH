@@ -2,16 +2,14 @@
  * Porch — the word-ear.
  *
  * Corti measures pitch. Porch hears words.
- * The tape stays in this house unless Everett stands a local ear.
- * No rented cloud ear. No invented speech.
- *
+ * The tape stays on this machine. No xAI STT. No grok dialect mill.
  * Dialect is kept. SAE "correction" is a bug.
  */
 
 export const PORCH_ORGAN = "porch" as const;
 export const PORCH_FAMILY = "christman-sound" as const;
 
-export type HonestyEar = "local" | "unavailable" | "sample" | "file";
+export type HonestyEar = "local" | "sample" | "file" | "unseated";
 export type HonestyDialect = "passthrough";
 
 export type PorchCorrection = {
@@ -36,7 +34,7 @@ export type PorchTake = {
     ear: HonestyEar;
     dialect: HonestyDialect;
     corti: "not-this-nerve";
-    cloud: boolean;
+    cloud: false;
     rule: string;
   };
 };
@@ -55,4 +53,4 @@ export type LexiconEntry = {
 };
 
 export const PORCH_HONESTY_RULE =
-  "Porch is the word-ear. The tape stays here. Dialect is kept. live is /laɪv/, not leave. Whisper is not in this body. A cloud ear is named if it is ever used. Empty ear stays empty.";
+  "Porch is the word-ear. The tape stays on this machine. No xAI STT. No grok-4.5 mill. Dialect is kept. live is /laɪv/, not leave. Whisper is not in this body.";

@@ -28,8 +28,8 @@ export type TranscribeResult =
   | { ok: false; error: string };
 
 function localEarUrl(): string {
-  // Filament is the ear. Own GitHub: EverettNC/THEFILAMENT. Not Whole House. Not a copy.
-  return (process.env.FILAMENT_EAR_URL || process.env.PORCH_EAR_URL || "").trim();
+  // Filament is the ear. Own GitHub: EverettNC/THEFILAMENT. Vosk on :4850.
+  return (process.env.FILAMENT_EAR_URL || process.env.PORCH_EAR_URL || "http://127.0.0.1:4850/stt").trim();
 }
 
 function asRecord(value: unknown): Record<string, unknown> | null {
@@ -92,8 +92,20 @@ function fail(error: string): TranscribeResult {
 
 export async function runPorchStt(data: TranscribeInput): Promise<TranscribeResult> {
   const ear = localEarUrl();
-  if (!ear) {
-    return fail("The word-ear is not on this machine. No cloud ear. No invented speech.");
+  try {
+    const health = ear.replace(/\/stt\/?$/, "/health").replace(/\/transcribe\/?$/, "/health");
+    const res = await fetch(health);
+    const body = (await res.json()) as { seated?: boolean; error?: string };
+    if (!body.seated) {
+      return fail(
+        body.error ||
+          "Filament ear is unseated. Seat Vosk on :4850 (EverettNC/THEFILAMENT). Empty ear stays empty.",
+      );
+    }
+  } catch {
+    return fail(
+      "Filament ear is unseated. Seat Vosk on :4850 (EverettNC/THEFILAMENT). Empty ear stays empty. No invented speech.",
+    );
   }
 
   const extraLexicon: LexiconEntry[] = data.extraLexicon ?? [];

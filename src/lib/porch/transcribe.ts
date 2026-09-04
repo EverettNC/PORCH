@@ -28,7 +28,8 @@ export type TranscribeResult =
   | { ok: false; error: string };
 
 function localEarUrl(): string {
-  return (process.env.PORCH_EAR_URL || process.env.FILAMENT_EAR_URL || "").trim();
+  // Filament is the ear. Own GitHub: EverettNC/THEFILAMENT. Not Whole House. Not a copy.
+  return (process.env.FILAMENT_EAR_URL || process.env.PORCH_EAR_URL || "").trim();
 }
 
 function asRecord(value: unknown): Record<string, unknown> | null {

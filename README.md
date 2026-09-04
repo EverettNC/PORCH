@@ -7,8 +7,12 @@ The word-ear. Corti hears without judgement. Porch hears the words.
 Dialect stays. SAE "correction" is a bug. Whisper is not in this body.
 Meet the world in their backyard, not ours.
 
-Sister organs: Corti, Lucent, Canal. The house window still lives in
-`EverettNC/THEWHOLEHOUSE` (`/say` on :9785). This folder is Porch's own home.
+## Sister organs
+
+- **Filament** — the cochlea. Fibers. The catch. Own house: [EverettNC/THEFILAMENT](https://github.com/EverettNC/THEFILAMENT). Do not copy the engine here.
+- **Corti, Lucent, Canal** — sisters. The house window still lives in `EverettNC/THEWHOLEHOUSE` (`/say` on :9785). This folder is Porch's own home. The Whole House does not have to be up.
+
+Filament's ear is Vosk, offline. Seat it from THEFILAMENT. `FILAMENT_EAR_URL` / `PORCH_EAR_URL`. Empty ear stays empty. No invented speech.
 
 ## Law
 
@@ -24,8 +28,8 @@ Sister organs: Corti, Lucent, Canal. The house window still lives in
 
 ```
 src/lib/porch/          dialect, lexicon, mangle, transcribe, types
+src/lib/filament/       client types + mic/wav — engine lives in THEFILAMENT
 src/components/porch/   word-ear surface
-src/routes/             /say, /api/porch/stt, /api/porch/live
 public/samples/         porch-clip.mp3
 ```
 
